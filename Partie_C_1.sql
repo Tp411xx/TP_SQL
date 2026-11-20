@@ -12,7 +12,5 @@ WHERE id NOT IN (SELECT manager_id FROM employes);
 --`WHERE` ne conserve que les lignes TRUE : aucune ligne n'est retournée.
 
 -- correction fiable 
-
-SELECT e.id, e.nom
-FROM employes e
-WHERE NOT EXISTS (SELECT 1 FROM employes m WHERE m.manager_id = e.id)
+SELECT id, nom FROM employes
+WHERE id NOT IN (SELECT manager_id FROM employes WHERE manager_id IS NOT NULL);
